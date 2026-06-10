@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Complete Your Order</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#000,#111,#1a1a1a);
+color:#fff;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+padding:20px;
+}
+
+.card{
+width:100%;
+max-width:500px;
+background:#111;
+border-radius:20px;
+padding:30px;
+text-align:center;
+box-shadow:0 0 30px rgba(255,165,0,.3);
+border:1px solid #333;
+}
+
+.badge{
+display:inline-block;
+background:#00c853;
+padding:8px 15px;
+border-radius:30px;
+font-size:14px;
+font-weight:bold;
+margin-bottom:15px;
+}
+
+h1{
+font-size:32px;
+margin-bottom:10px;
+}
+
+.price{
+margin:20px 0;
+}
+
+.old{
+text-decoration:line-through;
+color:#999;
+font-size:24px;
+}
+
+.new{
+display:block;
+font-size:42px;
+font-weight:bold;
+color:#ffcc00;
+margin-top:5px;
+}
+
+.features{
+text-align:left;
+margin:25px 0;
+}
+
+.features li{
+list-style:none;
+padding:10px 0;
+border-bottom:1px solid #222;
+}
+
+.pay-btn{
+display:block;
+width:100%;
+padding:18px;
+background:linear-gradient(45deg,#ff6a00,#ffcc00);
+border:none;
+border-radius:50px;
+font-size:22px;
+font-weight:bold;
+cursor:pointer;
+text-decoration:none;
+color:#000;
+margin-top:20px;
+animation:pulse 1.2s infinite;
+}
+
+@keyframes pulse{
+0%{transform:scale(1);}
+50%{transform:scale(1.04);}
+100%{transform:scale(1);}
+}
+
+.secure{
+margin-top:20px;
+font-size:14px;
+color:#bbb;
+}
+
+.timer{
+font-size:28px;
+font-weight:bold;
+color:#ff5252;
+margin-top:15px;
+}
+
+</style>
+</head>
+<body>
+
+<div class="card">
+
+<div class="badge">🔥 LIMITED TIME OFFER</div>
+
+<h1>Complete Your Order</h1>
+
+<div class="price">
+<span class="old">₹999</span>
+<span class="new">₹295</span>
+</div>
+
+<div class="timer" id="timer">15:00</div>
+
+<ul class="features">
+<li>✅ Instant Access</li>
+<li>✅ Lifetime Access</li>
+<li>✅ One Time Payment</li>
+<li>✅ Mobile & PC Supported</li>
+<li>✅ Fast Delivery</li>
+</ul>
+
+<a href="#" class="pay-btn">
+🔒 PAY ₹295 NOW
+</a>
+
+<div class="secure">
+100% Secure Checkout • Instant Delivery
+</div>
+
+</div>
+
+<script>
+let time=900;
+
+setInterval(()=>{
+let min=Math.floor(time/60);
+let sec=time%60;
+
+document.getElementById("timer").innerHTML=
+String(min).padStart(2,'0')+":"+
+String(sec).padStart(2,'0');
+
+if(time>0) time--;
+},1000);
+</script>
+
+</body>
+</html>
