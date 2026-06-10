@@ -1,0 +1,453 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Pay ₹295.00 | Trusted Seller</title>
+<meta name="csrf-token" content="18YKbxvgf6gp6MOUuNrYPCqWDVjgZl5XQHxIAStL">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script defer src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+*{font-family:'Inter',-apple-system,'Segoe UI',system-ui,sans-serif;-webkit-font-smoothing:antialiased;}
+:root{
+  --primary:#103b30;--primary-light:#16483b;--primary-dark:#0a261f;
+  --accent:#d3eb5a;--accent-dark:#b8cc46;
+  --white:#fff;--bg-page:#e3e7ec;--border:#e2e5ea;
+  --text:#1a1d23;--text-sub:#4b5563;--text-muted:#9ca3af;
+  --success:#16a34a;--warning:#d97706;--r8:8px;--r12:12px;--r16:16px;
+}
+html,body{min-height:100vh;background:var(--bg-page);}
+
+/* ═══ DESKTOP ═══ */
+.d-wrap{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:30px 20px;}
+.d-modal{width:100%;max-width:1000px;height:min(540px,calc(100vh - 52px));display:grid;grid-template-columns:310px 1fr;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.25),0 4px 16px rgba(0,0,0,.12);position:relative;}
+.d-left{background:linear-gradient(175deg,var(--primary-light) 0%,var(--primary) 55%,var(--primary-dark) 100%);display:flex;flex-direction:column;padding:32px 26px 26px;position:relative;overflow:hidden;}
+.d-left::before{content:'';position:absolute;bottom:-80px;left:-80px;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,.05);}
+.d-left::after{content:'';position:absolute;bottom:60px;right:-120px;width:320px;height:320px;border-radius:50%;background:rgba(255,255,255,.04);}
+.dl-merchant{display:flex;align-items:center;gap:14px;margin-bottom:30px;position:relative;z-index:1;}
+.dl-avatar{width:52px;height:52px;border-radius:12px;background:rgba(255,255,255,.18);border:2px solid rgba(255,255,255,.35);display:flex;align-items:center;justify-content:center;font-size:1.05rem;font-weight:700;color:white;overflow:hidden;flex-shrink:0;}
+.dl-avatar img{width:100%;height:100%;object-fit:cover;}
+.dl-name{font-size:1.05rem;font-weight:700;color:white;max-width:190px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.dl-price-box{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.2);border-radius:var(--r12);padding:18px 20px;margin-bottom:14px;position:relative;z-index:1;}
+.dl-price-label{font-size:.74rem;font-weight:500;color:rgba(255,255,255,.6);margin-bottom:6px;}
+.dl-price{font-size:2.2rem;font-weight:700;color:white;letter-spacing:-1px;line-height:1;}
+.dl-price sup{font-size:1.1rem;font-weight:600;vertical-align:super;margin-right:2px;}
+.dl-order{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);border-radius:var(--r8);padding:10px 14px;display:flex;align-items:center;gap:9px;position:relative;z-index:1;}
+.dl-order i{font-size:.8rem;color:rgba(255,255,255,.55);}
+.dl-order span{font-size:.8rem;color:rgba(255,255,255,.8);font-weight:500;word-break:break-all;}
+.dl-secured{margin-top:auto;font-size:.73rem;color:rgba(255,255,255,.5);display:flex;align-items:center;gap:6px;position:relative;z-index:1;}
+.dl-secured b{color:rgba(255,255,255,.78);font-weight:600;}
+.d-right{background:var(--white);display:flex;flex-direction:column;}
+.dr-header{padding:18px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
+.dr-header-title{font-size:.92rem;font-weight:600;color:var(--text);}
+.dr-header-btns{display:flex;gap:8px;}
+.dr-hbtn{width:30px;height:30px;border-radius:50%;border:1px solid var(--border);background:transparent;cursor:pointer;color:var(--text-muted);font-size:.72rem;display:flex;align-items:center;justify-content:center;transition:.15s;}
+.dr-hbtn:hover{background:#f8f9fa;color:var(--text);}
+.dr-body{display:flex;flex:1;overflow:hidden;}
+.dr-methods{width:215px;flex-shrink:0;border-right:1px solid var(--border);padding:18px 0;overflow-y:auto;}
+.drm-group-label{font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.9px;color:var(--text-muted);padding:0 18px 8px;}
+.drm-row{display:flex;align-items:center;justify-content:space-between;padding:11px 16px 11px 18px;cursor:pointer;transition:.12s;border-left:3px solid transparent;}
+.drm-row.active{background:#f0fdf4;border-left-color:var(--primary);}
+.drm-row:hover:not(.active){background:#f8f9fa;}
+.drm-name{font-size:.84rem;font-weight:500;color:var(--text);}
+.drm-icons{display:flex;gap:3px;}
+.drm-icon-chip{height:16px;min-width:22px;border-radius:3px;border:1px solid #e8eaed;background:white;display:flex;align-items:center;justify-content:center;padding:1px 3px;overflow:hidden;}
+.drm-icon-chip img{max-height:12px;max-width:28px;object-fit:contain;}
+.dr-content{flex:1;padding:15px 20px 12px;display:flex;flex-direction:column;overflow-y:hidden;}
+.drc-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;}
+.drc-title{font-size:.88rem;font-weight:600;color:var(--text);}
+.drc-timer{display:flex;align-items:center;gap:5px;font-size:.8rem;font-weight:600;color:var(--warning);}
+.drc-qr-row{display:flex;gap:18px;margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid var(--border);align-items:center;}
+.drc-qr-frame{width:200px;height:200px;flex-shrink:0;border:1px solid #d4d8df;border-radius:var(--r8);overflow:hidden;cursor:pointer;position:relative;}
+.drc-qr-frame canvas{width:100%!important;height:100%!important;display:block!important;}
+.drc-qr-overlay{position:absolute;inset:0;background:rgba(0,0,0,.5);display:none;align-items:center;justify-content:center;color:white;font-size:1.2rem;}
+.drc-qr-frame:hover .drc-qr-overlay{display:flex;}
+.drc-qr-info{display:flex;flex-direction:column;justify-content:center;gap:8px;max-width:245px;}
+.drc-scan-label{font-size:1.2rem;font-weight:600;color:var(--text-sub);line-height:1.35;}
+.drc-qr-note{font-size:1.15rem;line-height:1.35;color:var(--text-sub);}
+.drc-qr-note-hi{font-size:1.15rem;line-height:1.35;color:var(--text-sub);}
+.drc-app-row{display:flex;gap:7px;flex-wrap:wrap;}
+.drc-app-chip{width:32px;height:32px;border-radius:8px;border:1px solid var(--border);background:white;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:4px;}
+.drc-app-chip img{width:100%;height:100%;object-fit:contain;}
+.drc-rec-label{font-size:.9rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--text-muted);margin:8px 0 6px;}
+.drc-intent-list{display:flex;flex-direction:column;gap:6px;}
+.drc-intent-row{display:flex;align-items:center;gap:12px;padding:14px 16px;border:1px solid var(--border);border-radius:var(--r8);cursor:pointer;transition:.15s;background:white;}
+.drc-intent-row:hover{border-color:#a4ceb8;background:#f2fbf5;}
+.drc-intent-icon{width:30px;height:30px;border-radius:7px;background:#f8f9fa;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden;padding:4px;}
+.drc-intent-icon img{width:100%;height:100%;object-fit:contain;}
+.drc-intent-name{flex:1;font-size:1.18rem;font-weight:500;color:var(--text);}
+.drc-intent-arr{color:var(--text-muted);font-size:.68rem;}
+.d-success-overlay{position:absolute;inset:0;border-radius:16px;background:rgba(255,255,255,.96);display:none;flex-direction:column;align-items:center;justify-content:center;gap:12px;z-index:50;backdrop-filter:blur(6px);}
+.success-ring{width:64px;height:64px;border-radius:50%;background:#f0fdf4;border:2px solid var(--success);display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:var(--success);animation:pop .4s cubic-bezier(.34,1.56,.64,1) both;}
+@keyframes pop{0%{transform:scale(.2);opacity:0}100%{transform:scale(1);opacity:1}}
+.sl-t{font-size:1.05rem;font-weight:700;color:var(--text);}
+.sl-s{font-size:.8rem;color:var(--text-muted);}
+
+/* ═══ MOBILE ═══ */
+.m-wrap{display:none;min-height:100vh;background:#f1f3f6;}
+.m-topbar{background:linear-gradient(135deg,var(--primary-light) 0%,var(--primary) 100%);padding:11px 14px;display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:20;}
+.m-back{width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);cursor:pointer;display:flex;align-items:center;justify-content:center;color:white;font-size:.8rem;flex-shrink:0;}
+.m-av{width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;font-size:.74rem;font-weight:700;color:white;overflow:hidden;flex-shrink:0;}
+.m-av img{width:100%;height:100%;object-fit:cover;}
+.m-tinfo{flex:1;min-width:0;}
+.m-tinfo .n{font-size:.84rem;font-weight:700;color:white;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.m-tinfo .e{font-size:.67rem;color:rgba(255,255,255,.6);}
+.m-body{padding:12px 12px 90px;}
+.m-price-card{background:linear-gradient(135deg,var(--primary-light) 0%,var(--primary) 100%);border-radius:var(--r12);padding:16px 18px 18px;margin-bottom:12px;display:flex;align-items:flex-end;justify-content:space-between;}
+.m-price-lbl{font-size:.68rem;color:rgba(255,255,255,.6);margin-bottom:4px;}
+.m-price-val{font-size:1.8rem;font-weight:700;color:white;letter-spacing:-.5px;}
+.m-price-val sup{font-size:1rem;vertical-align:super;margin-right:1px;font-weight:600;}
+.m-txn{text-align:right;}
+.m-txn-lbl{font-size:.62rem;color:rgba(255,255,255,.5);margin-bottom:3px;}
+.m-txn-val{font-size:.7rem;color:rgba(255,255,255,.8);max-width:120px;word-break:break-all;}
+.m-sec-title{font-size:.67rem;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--text-muted);margin:0 2px 7px;}
+.m-qr-card{background:white;border-radius:var(--r12);border:1px solid var(--border);padding:13px;margin-bottom:10px;box-shadow:0 1px 6px rgba(0,0,0,.05);}
+.m-qr-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+.m-qr-hdr-title{font-size:.84rem;font-weight:600;color:var(--text);}
+.m-qr-apps{display:flex;gap:4px;}
+.m-qr-apps img{width:22px;height:22px;border-radius:5px;border:1px solid var(--border);padding:2px;background:white;object-fit:contain;}
+.m-qr-body{display:flex;gap:12px;align-items:center;flex-wrap:wrap;flex-direction:column;}
+.m-qr-img{width:250px;height:250px;flex-shrink:0;border:1px solid #d0d5dd;border-radius:8px;overflow:hidden;}
+.m-qr-img canvas{width:100%!important;height:100%!important;display:block!important;}
+.m-qr-side{flex:1;display:flex;flex-direction:column;gap:6px;justify-content:center;}
+.m-qr-hint{font-size:1rem;color:var(--text-sub);line-height:1.35;}
+.m-qr-note{margin-top:4px;font-size:.95rem;line-height:1.35;color:var(--text-sub);}
+.m-qr-note-hi{margin-top:0;font-size:.95rem;line-height:1.35;color:var(--text-sub);}
+.m-qr-btn{display:flex;align-items:center;gap:6px;border:1px solid var(--border);border-radius:6px;padding:7px 10px;background:white;font-size:.72rem;font-weight:500;color:var(--text-sub);cursor:pointer;transition:.12s;width:fit-content;}
+.m-qr-btn i{font-size:.66rem;color:var(--primary);}
+.m-opts-card{background:white;border-radius:var(--r12);border:1px solid var(--border);overflow:hidden;box-shadow:0 1px 6px rgba(0,0,0,.05);}
+.m-opt-row{display:flex;align-items:center;gap:12px;padding:14px;border-bottom:1px solid var(--border);cursor:pointer;transition:.12s;}
+.m-opt-row:last-child{border-bottom:none;}
+.m-opt-row:active{background:#f8f9fa;}
+.m-opt-icon{width:38px;height:38px;border-radius:9px;background:#f8f9fa;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden;padding:6px;}
+.m-opt-icon img{width:100%;height:100%;object-fit:contain;}
+.m-opt-text{flex:1;}
+.m-opt-text .t{font-size:.86rem;font-weight:600;color:var(--text);}
+.m-opt-text .s{font-size:.7rem;color:var(--text-muted);margin-top:1px;}
+.m-radio{width:20px;height:20px;border-radius:50%;border:2px solid #d0d5dd;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:.15s;}
+.m-radio.on{border-color:var(--primary);background:var(--primary);}
+.m-radio.on::after{content:'';width:7px;height:7px;border-radius:50%;background:white;}
+.m-powered{text-align:center;font-size:.66rem;color:var(--text-muted);padding:14px 0 4px;}
+.m-bottom{position:fixed;bottom:0;left:0;right:0;background:white;border-top:1px solid var(--border);padding:11px 14px;padding-bottom:calc(11px + env(safe-area-inset-bottom));display:flex;align-items:center;justify-content:space-between;z-index:30;box-shadow:0 -3px 16px rgba(0,0,0,.08);}
+.m-bottom-amt .p{font-size:1.15rem;font-weight:700;color:var(--text);}
+.m-bottom-amt .b{font-size:.7rem;color:var(--primary);font-weight:500;cursor:pointer;margin-top:1px;}
+.m-pay-btn{background:var(--accent);color:var(--primary-dark);border:none;border-radius:var(--r8);padding:12px 30px;font-size:.93rem;font-weight:700;cursor:pointer;transition:.15s;box-shadow:0 4px 14px rgba(211,235,90,.4);}
+.m-pay-btn:active{transform:scale(.97);background:var(--accent-dark);}
+.m-success-overlay{position:fixed;inset:0;background:rgba(255,255,255,.97);display:none;flex-direction:column;align-items:center;justify-content:center;gap:12px;z-index:100;}
+@media(max-width:700px){body{background:#f1f3f6;}.d-wrap{display:none!important;}.m-wrap{display:block;}}
+@media(min-width:701px){.d-wrap{display:flex;}.m-wrap{display:none!important;}}
+</style>
+</head>
+<body>
+
+
+<div class="d-wrap">
+  <div class="d-modal">
+    <div class="d-success-overlay" id="successLoader">
+      <div class="success-ring"><i class="fas fa-check"></i></div>
+      <div class="sl-t">Payment Successful!</div>
+      <div class="sl-s">Redirecting you back…</div>
+    </div>
+
+    <div class="d-left">
+      <div class="dl-merchant">
+        <div class="dl-avatar">TR</div>
+        <div class="dl-name" title="TRUSTED SELLER">TRUSTED SELLER</div>
+      </div>
+      <div class="dl-price-box">
+        <div class="dl-price-label">Price Summary</div>
+        <div class="dl-price"><sup>&#8377;</sup>295.00</div>
+      </div>
+      <div class="dl-order">
+        <i class="fas fa-receipt"></i>
+        <span>ORD_1781115546</span>
+      </div>
+      <div class="dl-secured">
+                  <img src="https://payindiape.com/uploads/settings/logo_1780511521.png" alt="Logo" style="height:18px;max-width:110px;object-fit:contain;opacity:.75;">
+              </div>
+    </div>
+
+    <div class="d-right">
+      <div class="dr-header">
+        <span class="dr-header-title">Payment Options</span>
+        <div class="dr-header-btns">
+          <button class="dr-hbtn" title="Options"><i class="fas fa-ellipsis"></i></button>
+          <button class="dr-hbtn" onclick="confirmCancel()" title="Close"><i class="fas fa-times"></i></button>
+        </div>
+      </div>
+      <div class="dr-body">
+        <div class="dr-methods">
+          <div class="drm-group-label">Recommended</div>
+          <div class="drm-row active">
+            <span class="drm-name">UPI</span>
+            <div class="drm-icons">
+              <div class="drm-icon-chip"><img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Paytm_Logo_%28standalone%29.svg" alt="Paytm"></div>
+              <div class="drm-icon-chip"><img src="https://cdn.razorpay.com/app/navi.png" alt="BHIM"></div>
+            </div>
+          </div>
+        </div>
+        <div class="dr-content">
+          <div class="drc-top">
+            <span class="drc-title">UPI QR</span>
+            <div class="drc-timer"><i class="fas fa-clock"></i><span id="timer">10:00</span></div>
+          </div>
+                    <div class="drc-qr-row">
+            <div class="drc-qr-frame" onclick="downloadQR()" title="Click to download QR">
+              <div id="https://ik.imagekit.io/q3emnf9bso/file_00000000f218720796ba35b76dc945b7.jpg.jpeg?updatedAt=1780076169652"></div>
+              <div class="drc-qr-overlay"><i class="fas fa-download"></i></div>
+            </div>
+            <div class="drc-qr-info">
+              <div class="drc-scan-label">Scan the QR using any UPI App</div>
+              <div class="drc-app-row">
+                <div class="drc-app-chip"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-cExS824Qzbjcz7acOlVaU_nnW_4j7qM_HA&s" alt="PhonePe"></div>
+                <div class="drc-app-chip"><img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Paytm_Logo_%28standalone%29.svg" alt="Paytm"></div>
+                <div class="drc-app-chip"><img src="https://cdn.razorpay.com/app/navi.png" alt="BHIM"></div>
+                <div class="drc-app-chip"><img src="https://img.icons8.com/color/1200/bhim.jpg" alt="UPI"></div>
+              </div>
+            </div>
+          </div>
+          <div class="drc-qr-note">Take Screenshot of this QR code and scan using any UPI app</div>
+          <div class="drc-qr-note-hi">इस QR कोड का Screenshot लें और किसी भी UPI ऐप से Scan करें</div>
+          <div class="drc-rec-label">Recommended</div>
+          <div class="drc-intent-list">
+            </div>
+            <div class="drc-intent-row" onclick="openPaytmIntent()">
+              <div class="drc-intent-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Paytm_Logo_%28standalone%29.svg" alt="Paytm"></div>
+              <span class="drc-intent-name">Paytm</span>
+              <i class="fas fa-chevron-right drc-intent-arr"></i>
+            </div>
+          </div>
+                  </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="m-wrap">
+  <div class="m-success-overlay" id="mobSuccessLoader">
+    <div class="success-ring"><i class="fas fa-check"></i></div>
+    <div class="sl-t">Payment Successful!</div>
+    <div class="sl-s">Redirecting you back…</div>
+  </div>
+  <div class="m-topbar">
+    <button class="m-back" onclick="confirmCancel()"><i class="fas fa-arrow-left"></i></button>
+    <div class="m-av">TR</div>
+    <div class="m-tinfo">
+      <div class="n">Trusted Seller</div>
+      <div class="e">Expires in <span id="mob-timer">10:00</span></div>
+    </div>
+  </div>
+  <div class="m-body">
+    <div class="m-price-card">
+      <div>
+        <div class="m-price-lbl">Amount to Pay</div>
+        <div class="m-price-val"><sup>&#8377;</sup>295.00</div>
+      </div>
+      <div class="m-txn">
+        <div class="m-txn-lbl">Order ID</div>
+        <div class="m-txn-val">ORD_1781115546</div>
+      </div>
+    </div>
+        <div class="m-sec-title">UPI QR</div>
+    <div class="m-qr-card">
+      <div class="m-qr-hdr">
+        <span class="m-qr-hdr-title">Scan &amp; Pay</span>
+        <div class="m-qr-apps">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-cExS824Qzbjcz7acOlVaU_nnW_4j7qM_HA&s" alt="PhonePe">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Paytm_Logo_%28standalone%29.svg" alt="Paytm">
+          <img src="https://cdn.razorpay.com/app/navi.png" alt="BHIM">
+        </div>
+      </div>
+      <div class="m-qr-body">
+        <div class="m-qr-img"><div id="mb-qrcode"></div></div>
+        <div class="m-qr-side">
+          <div class="m-qr-hint" style="display:none;">Open any UPI app and scan to pay instantly</div>
+          <button class="m-qr-btn" onclick="downloadQR()"><i class="fas fa-download"></i> Download QR</button>
+        </div>
+      </div>
+        <div class="m-qr-note" style="color:#ef4444;font-weight:700;text-align:center;margin:10px 0 4px;">Take Screenshot of this QR code and scan using any UPI app, इस QR कोड का Screenshot लें और किसी भी UPI ऐप से Scan कर</div>
+    </div>
+    <br>
+    <div class="m-sec-title">Recommended</div>
+    <div class="m-opts-card">
+      </div>
+      <div class="m-opt-row" id="opt-paytm" onclick="selectOption('paytm')">
+        <div class="m-opt-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Paytm_Logo_%28standalone%29.svg" alt="Paytm"></div>
+        <div class="m-opt-text"><div class="t">Paytm</div><div class="s">Pay via Paytm UPI</div></div>
+        <div class="m-radio on" id="radio-paytm"></div>
+      </div>
+    </div>
+        <div class="m-powered">
+              <img src="https://payindiape.com/uploads/settings/logo_1780511521.png" alt="Logo" style="height:16px;max-width:90px;object-fit:contain;opacity:.7;">
+          </div>
+  </div>
+  <div class="m-bottom">
+    <div class="m-bottom-amt">
+      <div class="p">&#8377;295.00</div>
+      <div class="b" onclick="showBreakup()">View Breakup</div>
+    </div>
+    <button class="m-pay-btn" onclick="mobPay()">Pay Now</button>
+  </div>
+</div>
+
+<script>
+function isMobileUA(){return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);}
+function isIOS(){return /iPhone|iPad|iPod/i.test(navigator.userAgent)&&!/Android/i.test(navigator.userAgent);}
+function isAndroid(){return /Android/i.test(navigator.userAgent);}
+
+const upiLink     = "upi:\/\/pay?pa=paytm.s2bby2u%40pty&pn=Trusted%20Seller&am=295.00&tr=ORD_1781115546&tn=ORD_1781115546&cu=INR";
+const paytmIntent = "paytmmp:\/\/cash_wallet?pa=paytm.s2bby2u%40pty&pn=Trusted%20Seller&am=295.00&cu=INR&tn=ORD_1781115546&tr=ORD_1781115546&mc=4722&sign=AAuN7izDWN5cb8A5scnUiNME%2BLkZqI2DWgkXlN1McoP6WZABa%2FKkFTiLvuPRP6%2FnWK8BPg%2FrPhb%2Bu4QMrUEX10UsANTDbJaALcSM9b8Wk218X%2B55T%2FzOzb7xoiB%2BBcX8yYuYayELImXJHIgL%2Fc7nkAnHrwUCmbM97nRbCVVRvU0ku3Tr&featuretype=money_transfer";
+const phonepeInt  = "phonepe:\/\/native?data=eyJjb250YWN0Ijp7ImNic05hbWUiOiIiLCJuaWNrTmFtZSI6IiIsInZwYSI6InBheXRtLnMyYmJ5MnVAcHR5IiwidHlwZSI6IlZQQSJ9LCJwMnBQYXltZW50Q2hlY2tvdXRQYXJhbXMiOnsibm90ZSI6Ik9SRF8xNzgxMTE1NTQ2IiwiaXNCeURlZmF1bHRLbm93bkNvbnRhY3QiOnRydWUsImVuYWJsZVNwZWVjaFRvVGV4dCI6ZmFsc2UsImFsbG93QW1vdW50RWRpdCI6ZmFsc2UsInNob3dRckNvZGVPcHRpb24iOmZhbHNlLCJkaXNhYmxlVmlld0hpc3RvcnkiOnRydWUsInNob3VsZFNob3dVbnNhdmVkQ29udGFjdEJhbm5lciI6ZmFsc2UsImlzUmVjdXJyaW5nIjpmYWxzZSwiY2hlY2tvdXRUeXBlIjoiREVGQVVMVCIsInRyYW5zYWN0aW9uQ29udGV4dCI6InAycCIsImluaXRpYWxBbW91bnQiOjI5NTAwLCJkaXNhYmxlTm90ZXNFZGl0Ijp0cnVlLCJzaG93S2V5Ym9hcmQiOnRydWUsImN1cnJlbmN5IjoiSU5SIiwic2hvdWxkU2hvd01hc2tlZE51bWJlciI6dHJ1ZX19&id=p2ppayment";
+const upiId       = "paytm.s2bby2u@pty";
+const orderId     = "ORD_1781115546";
+const payToken    = "b147fda0af7da96bcf87aa350884a5018125d98959ef77fb34689e23aafe21e4";
+const redirectUrl = "https:\/\/a2zcomics.net\/?wc-api=payindiape_callback";
+const csrfToken   = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+// ── QR Generation ──
+function generateQR(){
+  const dt=document.getElementById('dt-qrcode');
+  if(dt){dt.innerHTML='';const c=document.createElement('canvas');new QRious({element:c,value:upiLink,size:336,level:'M'});dt.appendChild(c);}
+  const mb=document.getElementById('mb-qrcode');
+  if(mb){mb.innerHTML='';const c=document.createElement('canvas');new QRious({element:c,value:upiLink,size:280,level:'M'});mb.appendChild(c);}
+}
+document.addEventListener('DOMContentLoaded',generateQR);
+if(typeof QRious!=='undefined')generateQR();
+
+// ── Mobile option select ──
+let sel='paytm';
+function selectOption(o){
+  sel=o;
+  document.getElementById('radio-paytm').className='m-radio'+(o==='paytm'?' on':'');
+}
+function mobPay(){
+  openPaytmIntent();
+}
+
+// ── Toast ──
+function toast(title,text,icon='success'){
+  Swal.fire({icon,title,text,timer:1800,showConfirmButton:false,toast:true,position:'top-end'});
+}
+
+// ── Copy UPI ──
+function copyUpiId(){
+  const fb=()=>{const el=document.createElement('textarea');el.value=upiId;document.body.appendChild(el);el.select();try{document.execCommand('copy');toast('Copied!','UPI ID copied');}catch(e){}el.remove();};
+  navigator.clipboard?navigator.clipboard.writeText(upiId).then(()=>toast('Copied!','UPI ID copied')).catch(fb):fb();
+}
+
+// ── Paytm Intent ──
+function openPaytmIntent(){
+  if(isIOS()){window.location.href=upiLink;setTimeout(()=>{Swal.fire({icon:'info',title:'Open UPI App',html:'If app did not open, enter UPI ID manually:<br><br><b>'+upiId+'</b>',showCancelButton:true,confirmButtonText:'Copy UPI ID',cancelButtonText:'Close',confirmButtonColor:'#103b30'}).then(r=>{if(r.isConfirmed)copyUpiId();});},1200);return;}
+  if(isAndroid()&&paytmIntent){const s=Date.now();window.location.href=paytmIntent;setTimeout(()=>{if(Date.now()-s<1400)window.location.href=upiLink;},900);return;}
+  if(!isMobileUA()){Swal.fire({icon:'info',title:'Open on Mobile',html:'Please scan the QR code or open on your phone.<br><br>UPI ID: <b>'+upiId+'</b>',confirmButtonText:'Copy UPI ID',showCancelButton:true,cancelButtonText:'Close',confirmButtonColor:'#103b30'}).then(r=>{if(r.isConfirmed)copyUpiId();});return;}
+  try{window.location.href=upiLink;}catch(e){Swal.fire({icon:'error',title:'Error',text:'Unable to open payment app.'});}
+}
+
+// ── PhonePe Intent ──
+function openPhonePeIntent(){
+  if(isIOS()){window.location.href=upiLink;setTimeout(()=>{Swal.fire({icon:'info',title:'Open PhonePe',html:'If app did not open, enter UPI ID manually:<br><br><b>'+upiId+'</b>',showCancelButton:true,confirmButtonText:'Copy UPI ID',cancelButtonText:'Close',confirmButtonColor:'#103b30'}).then(r=>{if(r.isConfirmed)copyUpiId();});},1200);return;}
+  if(isAndroid()){const s=Date.now();const intentStr='intent://pay?pa='+encodeURIComponent(upiId)+'&pn='+encodeURIComponent('Trusted Seller')+'&am=295.00&tr='+encodeURIComponent(orderId)+'&tn='+encodeURIComponent(orderId)+'&cu=INR#Intent;scheme=upi;package=com.phonepe.app;end';window.location.href=intentStr;setTimeout(()=>{if(Date.now()-s<1400)window.location.href=phonepeInt;},900);return;}
+  if(!isMobileUA()){Swal.fire({icon:'info',title:'Open on Mobile',html:'Please scan the QR code or open on your phone.<br><br>UPI ID: <b>'+upiId+'</b>',confirmButtonText:'Copy UPI ID',showCancelButton:true,cancelButtonText:'Close',confirmButtonColor:'#103b30'}).then(r=>{if(r.isConfirmed)copyUpiId();});return;}
+  try{window.location.href=upiLink;}catch(e){Swal.fire({icon:'error',title:'Error',text:'Unable to open payment app.'});}
+}
+
+// ── Share QR ──
+async function shareQRCode(){
+  try{
+    const canvas=document.querySelector('#dt-qrcode canvas')||document.querySelector('#mb-qrcode canvas');
+    if(canvas){const blob=await new Promise(r=>canvas.toBlob(r,'image/png'));const f=new File([blob],'upi-qr.png',{type:'image/png'});if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({title:'UPI QR Code',text:'Scan to pay',files:[f]});return;}}
+    if(navigator.share){await navigator.share({title:'UPI Payment',text:'Pay via UPI: '+upiLink});}
+    else{toast('Info','Please screenshot the QR code to share','info');}
+  }catch(e){if(e.name!=='AbortError')Swal.fire({icon:'error',title:'Share Failed',text:'Could not share QR.'});}
+}
+
+// ── Download QR ──
+async function downloadQR(){
+  try{
+    const canvas=document.querySelector('#dt-qrcode canvas')||document.querySelector('#mb-qrcode canvas');
+    if(canvas){const url=canvas.toDataURL('image/png');const a=document.createElement('a');a.href=url;a.download='qr_'+orderId+'.png';document.body.appendChild(a);a.click();a.remove();toast('Downloaded','QR code saved');}
+  }catch(e){Swal.fire({icon:'error',title:'Download Failed'});}
+}
+
+// ── Breakup ──
+function showBreakup(){
+  Swal.fire({title:'Price Summary',html:'<div style="font-size:.85rem;text-align:left"><div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f0f2f5"><span style="color:#4b5563">Subtotal</span><span style="font-weight:600">&#8377;295.00</span></div><div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f0f2f5"><span style="color:#4b5563">Convenience Fee</span><span style="font-weight:600">&#8377;0.00</span></div><div style="display:flex;justify-content:space-between;padding:10px 0;font-weight:700;font-size:.92rem"><span>Grand Total</span><span>&#8377;295.00</span></div></div>',confirmButtonText:'Got it',confirmButtonColor:'#103b30'});
+}
+
+// ── Cancel ──
+function confirmCancel(){
+  Swal.fire({html:'<div style="text-align:center;padding:4px 0 2px"><div style="width:52px;height:52px;border-radius:50%;background:#e6f2ee;display:flex;align-items:center;justify-content:center;margin:0 auto 14px"><i class="fas fa-exclamation-triangle" style="color:#103b30;font-size:1.2rem"></i></div><h3 style="font-size:1rem;font-weight:700;color:#1a1d23;margin-bottom:8px">Cancel Payment?</h3><p style="font-size:.8rem;color:#9ca3af;line-height:1.5">Your payment may be ongoing. Are you sure you want to cancel?</p></div>',showCancelButton:true,confirmButtonText:'No, wait',cancelButtonText:'Yes, cancel',confirmButtonColor:'#103b30',cancelButtonColor:'#e5e7eb'}).then(r=>{if(!r.isConfirmed){if(window!==window.parent){window.parent.postMessage({status:'cancelled',order_id:orderId},'*');}else{window.history.back();}}});
+}
+
+// ── Timer (10 min) ──
+let duration=600;
+const t1=document.getElementById('timer');
+const t2=document.getElementById('mob-timer');
+const iv=setInterval(()=>{
+  const m=Math.floor(duration/60).toString().padStart(2,'0');
+  const s=(duration%60).toString().padStart(2,'0');
+  const v=m+':'+s;
+  if(t1)t1.textContent=v;
+  if(t2)t2.textContent=v;
+  if(duration<=60){if(t1)t1.style.color='#ef4444';if(t2)t2.style.color='#ef4444';}
+  if(--duration<0){clearInterval(iv);location.reload();}
+},1000);
+
+// ── Success Handler ──
+function showSuccess(){
+  document.getElementById('successLoader').style.display='flex';
+  document.getElementById('mobSuccessLoader').style.display='flex';
+  setTimeout(()=>{
+    if(window!==window.parent){
+      window.parent.postMessage({status:'success',order_id:orderId,amount:'295.00',payment_url:window.location.href},'*');
+    } else {
+      const base=redirectUrl||'/';
+      window.location.href=base+(base.includes('?')?'&':'?')+'status=SUCCESS&order_id='+orderId;
+    }
+  },1800);
+}
+
+// ── Auto Polling (every 3 sec, starts after 5 sec) ──
+let pollActive=false;
+let ci;
+
+function doPoll(){
+  if(pollActive)return;
+  pollActive=true;
+  fetch("https://qrstaff.us.cc/payment/check-status",{
+    method:'POST',
+    headers:{'Content-Type':'application/x-www-form-urlencoded','X-CSRF-TOKEN':csrfToken},
+    body:'_token='+encodeURIComponent(csrfToken)+'&order_id='+encodeURIComponent(orderId)+'&payment_token='+encodeURIComponent(payToken)
+  })
+  .then(r=>r.json())
+  .then(res=>{
+    pollActive=false;
+    if(res.status==='SUCCESS'){clearInterval(ci);showSuccess();}
+    else if(res.status==='EXPIRED'||res.status==='FAILURE'){clearInterval(ci);Swal.fire({icon:'error',title:'Payment Failed',text:'This payment session has expired.',confirmButtonColor:'#103b30'}).then(()=>location.reload());}
+  })
+  .catch(()=>{pollActive=false;});
+}
+
+// Snapshot capture on load (for BharatPe)
+(async function captureSnapshot(){
+  try{
+    await fetch("https://qrstaff.us.cc/payment/snapshot",{
+      method:'POST',
+      headers:{'Content-Type':'application/x-www-form-urlencoded','X-CSRF-TOKEN':csrfToken},
+      body:'_token='+encodeURIComponent(csrfToken)+'&order_id='+encodeURIComponent(orderId)
+    });
+  }catch(e){}
+})();
+
+setTimeout(()=>{ci=setInterval(doPoll,3000);},5000);
+</script>
+<script>
+var fl=document.createElement('link');fl.href='https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap';fl.rel='stylesheet';document.head.appendChild(fl);
+</script>
+</body>
+</html>
