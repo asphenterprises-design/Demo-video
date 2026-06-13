@@ -281,6 +281,24 @@ time--;
 },1000);
 
 </script>
+     </script>
+
+<audio id="welcomeAudio">
+    <source src="https://ik.imagekit.io/q3emnf9bso/luvvoice.com-20260613-tswYyv.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+window.addEventListener('load', function() {
+    const audio = document.getElementById('welcomeAudio');
+
+    document.body.addEventListener('click', function() {
+        audio.play();
+    }, { once: true });
+});
+</script>
+
+</body>
+</html>
 
 </body>
 </html>
